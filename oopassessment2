@@ -1,0 +1,100 @@
+  
+
+class Species {
+    constructor(diet, lifespan) {
+      this.diet = diet;
+      this.lifespan = lifespan;
+    }
+     eat() {
+      if (this.diet === "Herbivore") {
+        console.log("The species eats herbs.");
+      } else if (this.diet === "Carnivore") {
+        console.log("The species is eating fellow animals.");
+      } else {
+        console.log("The species can eat different things that plants and animals.");
+      }
+    }
+  }
+   class Predator extends Species {
+    constructor(diet, lifespan, way_of_hunting) {
+      super(diet, lifespan);
+      this.way_of_hunting = way_of_hunting;
+    }
+     hunt() {
+      if (this.way_of_hunting === "Runs after the prey") {
+        console.log("The predator gets its prey by running after the prey.");
+      } else if (this.way_of_hunting === "Ambush") {
+        console.log("The predator gets its prey by ambushing them.");
+      } else {
+        console.log("The predator employs different ways of getting food.");
+      }
+    }
+  }
+   class Prey extends Species {
+    constructor(diet, lifespan, migration_pattern) {
+      super(diet, lifespan);
+      this.migration_pattern = migration_pattern;
+    }
+     predictMigrationPatterns(locationOfThePrey, locationOfThePredator) {
+      if (locationOfThePredator === locationOfThePrey) {
+        return "The prey will shift to distant places where there are no predators.";
+      } else {
+        return "The prey will not move.";
+      }
+    }
+     migrate() {
+      if (this.migration_pattern === "Seasonal migration") {
+        console.log("The prey is migrating to a different location seasonally.");
+    } else if (this.migration_pattern === "No migration") {
+      console.log("The prey does not migrate.");
+    } else {
+      console.log("The prey has a different migration pattern.");
+    }
+  }
+}
+ const antelope = new Prey("Herbivore", 90, "Seasonal migration");
+antelope.eat()
+const rabbit = new Prey("Herbivore", 60, "No migration");
+rabbit.eat()
+const leopard = new Predator("Carnivore", 45, "Ambush");
+const wolf = new Predator("Carnivore", 40, "Chase");
+ leopard.eat();
+wolf.hunt();
+
+
+// **African Music Festival:** You're in charge of organizing a Pan-African 
+// music festival. Many artists from different countries, each with their own 
+// musical style and instruments, are scheduled to perform. You need to write a 
+// program to manage the festival lineup, schedule, and stage arrangements. 
+// Think about how you might model the `Artist`, `Performance`, and `Stage` 
+// classes, and consider how you might use inheritance if there are different
+//  types of performances or stages.
+
+
+// students above average
+class student{
+  constructor(name,age,grade){
+    this.name=name
+    this.age=age
+    this.grade=grade
+  }
+  calculateAverage(){
+    let average=this.grade.reduce((a,b)=>a+b,0)/this.grade.length
+    return average
+    
+  }
+  hasPassed(){
+    let averagescore=this.calculateAverage()
+    if(averagescore>=60){
+      return "student has passed"
+    }
+    else{
+      return "student is below average"
+    }
+  }
+}
+let student1=new student("loice",20,[80,90,90,78])
+console.log(student1.calculateAverage())
+let student2=new student("mary",24,[30,50,23,12])
+console.log(student2.calculateAverage());
+console.log(student1.hasPassed());
